@@ -3103,9 +3103,7 @@ def getScore(request,pk,**kwargs):
 
 
 from dateutil.parser import parse
-from backports.zoneinfo import ZoneInfo
-#replace with this import if on older python version
-#from backports.zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo
 
 # takes date str, request's api, and returns list of games
 def todaysGames(date):
