@@ -51,10 +51,10 @@ def setup_logging(username, modelNum):
 
     return logger
 
-class DirectWriteLoggerCallback(tf.keras.callbacks.Callback):
-    def __init__(self, logger):
-        super(DirectWriteLoggerCallback, self).__init__()
-        self.logger = logger
+# class DirectWriteLoggerCallback(tf.keras.callbacks.Callback):
+#     def __init__(self, logger):
+#         super(DirectWriteLoggerCallback, self).__init__()
+#         self.logger = logger
 
 @contextlib.contextmanager
 def log_stdout(logger):
@@ -507,5 +507,5 @@ def webappTrain( modelNum,epochs,size,layer1Count,layer1Activation,layer2Count,l
 
 
             return [eval,res]
-        r = print_prediction(model, data)
-        return r
+        # r = print_prediction(model, data)
+        # return r
