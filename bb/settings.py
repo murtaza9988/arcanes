@@ -29,7 +29,8 @@ SECRET_KEY = 'ohhdsmr0ua_*1$jcgl0vxk+0@5q4z*5+e#7f^zgx!t#*jw&xf1'
 # SECURITY WARNING: don't   run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nealmick.com','0','localhost','firebet.ai']
+# ALLOWED_HOSTS = ['nealmick.com','0','localhost','firebet.ai']
+ALLOWED_HOSTS = ["*"]
 USE_WATCHMAN=False
 
 

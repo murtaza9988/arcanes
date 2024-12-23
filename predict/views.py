@@ -18,10 +18,10 @@ from django.http.response import HttpResponsePermanentRedirect
 from .models import Game,TensorflowModel,PermaGame, Retrain,ModelReset
 from users.models import Profile, Message,StripeCustomer
 
-from tensorflow.keras import *
-from tensorflow.keras.callbacks import TensorBoard, EarlyStopping, ModelCheckpoint
+# from tensorflow.keras import *
+# from tensorflow.keras.callbacks import TensorBoard, EarlyStopping, ModelCheckpoint
 from sklearn.model_selection import train_test_split
-import tensorflow as tf
+# import tensorflow as tf
 
 
 import requests, json, time, operator, pickle, random,os,shutil

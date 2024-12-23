@@ -1,8 +1,8 @@
 import time
 import numpy as np
 import pandas as pd
-import tensorflow as tf
-from tensorflow.keras.callbacks import TensorBoard, EarlyStopping, ModelCheckpoint
+# import tensorflow as tf
+# from tensorflow.keras.callbacks import TensorBoard, EarlyStopping, ModelCheckpoint
 from sklearn.model_selection import train_test_split
 import datetime
 
@@ -16,7 +16,7 @@ import os
 
 
 
-import tensorflow as tf
+# import tensorflow as tf
 
 
 class ImmediateFileHandler(logging.FileHandler):
@@ -169,55 +169,55 @@ def webappTrain( modelNum,epochs,size,layer1Count,layer1Activation,layer2Count,l
 
 
         #define model
-        if kr =='true':
+        # if kr =='true':
 
 
-            model = tf.keras.Sequential([
-                tf.keras.layers.Dense(layer1Count, activation=layer1Activation, kernel_regularizer=tf.keras.regularizers.l2(0.001)),
-                tf.keras.layers.Dense(layer2Count, activation=layer2Activation, kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+        #     model = tf.keras.Sequential([
+        #         tf.keras.layers.Dense(layer1Count, activation=layer1Activation, kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+        #         tf.keras.layers.Dense(layer2Count, activation=layer2Activation, kernel_regularizer=tf.keras.regularizers.l2(0.001)),
                 
-                tf.keras.layers.Dense(2, activation='linear'),
+        #         tf.keras.layers.Dense(2, activation='linear'),
 
-            ])
-        else:
-            model = tf.keras.Sequential([
-                tf.keras.layers.Dense(layer1Count, activation=layer1Activation),
-                tf.keras.layers.Dense(layer2Count, activation=layer2Activation),
+        #     ])
+        # else:
+        #     model = tf.keras.Sequential([
+        #         tf.keras.layers.Dense(layer1Count, activation=layer1Activation),
+        #         tf.keras.layers.Dense(layer2Count, activation=layer2Activation),
                 
-                tf.keras.layers.Dense(2, activation='linear'),
+        #         tf.keras.layers.Dense(2, activation='linear'),
 
-            ])
+        #     ])
         #early stopping
-        if rmw =='true':
-            EarlyStopping = tf.keras.callbacks.EarlyStopping(
-                monitor='val_loss',
-                restore_best_weights=True,
-                patience=4, verbose=0, mode='auto')
-        else:       
-            EarlyStopping = tf.keras.callbacks.EarlyStopping(
-                monitor='val_loss',
-                restore_best_weights=False,
-                patience=4, verbose=0, mode='auto')
+        # if rmw =='true':
+        #     EarlyStopping = tf.keras.callbacks.EarlyStopping(
+        #         monitor='val_loss',
+        #         restore_best_weights=True,
+        #         patience=4, verbose=0, mode='auto')
+        # else:       
+        #     EarlyStopping = tf.keras.callbacks.EarlyStopping(
+        #         monitor='val_loss',
+        #         restore_best_weights=False,
+        #         patience=4, verbose=0, mode='auto')
 
-        #tensorboard log dir
-        log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-        #tensorboard callback
-        TensorBoard = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
+        # #tensorboard log dir
+        # log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        # #tensorboard callback
+        # TensorBoard = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
 
-        #compile model
-        model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['accuracy'])
-        logger = setup_logging(username, modelNum)
-        direct_write_logger_callback = DirectWriteLoggerCallback(logger)
+        # #compile model
+        # model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['accuracy'])
+        # logger = setup_logging(username, modelNum)
+        # direct_write_logger_callback = DirectWriteLoggerCallback(logger)
 
 
-        #train model
+        # #train model
         
-        if es =='true':
-            model.fit(x_train, y_train, epochs=epochs, validation_split=0.1, batch_size=size ,callbacks=[TensorBoard,EarlyStopping,direct_write_logger_callback],shuffle=False)
-        else:
-            model.fit(x_train, y_train, epochs=epochs, validation_split=0.1, batch_size=size ,callbacks=[TensorBoard,direct_write_logger_callback],shuffle=False)
-        #save weights
-        model.save_weights('./userModels/'+username.username+'/'+str(modelNum)+'/checkpoints/my_checkpoint')
+        # if es =='true':
+        #     model.fit(x_train, y_train, epochs=epochs, validation_split=0.1, batch_size=size ,callbacks=[TensorBoard,EarlyStopping,direct_write_logger_callback],shuffle=False)
+        # else:
+        #     model.fit(x_train, y_train, epochs=epochs, validation_split=0.1, batch_size=size ,callbacks=[TensorBoard,direct_write_logger_callback],shuffle=False)
+        # #save weights
+        # model.save_weights('./userModels/'+username.username+'/'+str(modelNum)+'/checkpoints/my_checkpoint')
 
 
 
